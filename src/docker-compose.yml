@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  jenkins: 
+    build: 
+      context: ./master
+    ports: 
+      - 80:8080
+      - 50000:50000
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - ./config:/var/jenkins_conf
+    environment:
+      - CASC_JENKINS_CONFIG=/var/jenkins_conf
+volumes:
+  jenkins_home:
